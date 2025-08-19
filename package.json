@@ -3,6 +3,11 @@
   "displayName": "Mark It - Persistent Code Highlighter",
   "description": "Mark code snippets with persistent blue highlighting",
   "version": "1.0.0",
+  "publisher": "Manish774",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manish774/mark-my-text.git"
+  },
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -18,6 +23,11 @@
       {
         "command": "markIt.markSelection",
         "title": "Mark It",
+        "icon": "$(bookmark)"
+      },
+      {
+        "command": "markIt.chooseColor",
+        "title": "Mark it - Choose color",
         "icon": "$(bookmark)"
       },
       {
@@ -65,7 +75,7 @@
       "properties": {
         "markIt.highlightColor": {
           "type": "string",
-          "default": "rgba(0, 123, 255, 0.3)",
+          "default": "rgba(207, 222, 10, 0.85)",
           "description": "Background color for marked text (CSS color format)"
         },
         "markIt.borderColor": {

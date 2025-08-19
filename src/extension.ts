@@ -16,6 +16,7 @@ interface StoredMarks {
 }
 
 class MarkItManager {
+  //8ilOrdP3S89M3ZUPR7KuSNaER6mtZiyVzkyqiVjI8q1npxvJHVAjJQQJ99BHACAAAAAAAAAAAAASAZDO3wLb
   private context: vscode.ExtensionContext;
   private decorationType: vscode.TextEditorDecorationType;
   private markedRanges: Map<string, MarkedRange[]> = new Map();
@@ -32,7 +33,7 @@ class MarkItManager {
     const config = vscode.workspace.getConfiguration("markIt");
 
     return vscode.window.createTextEditorDecorationType({
-      backgroundColor: config.get("highlightColor", "rgba(164, 240, 0, 0.3)"),
+      backgroundColor: config.get("highlightColor", "rgba(207, 222, 10, 0.85)"),
       border: `1px solid ${config.get("borderColor", "#fffb00ff")}`,
       borderRadius: "3px",
       overviewRulerColor: config.get("showInOverviewRuler", true)
@@ -175,6 +176,67 @@ class MarkItManager {
         selectedText.length > 50 ? "..." : ""
       }"`
     );
+  }
+  public async chooseColor() {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      vscode.window.showWarningMessage("No active editor found");
+      return;
+    }
+    const colorCombos = [
+      {
+        backgroundColor: "#1E293B", // Dark Blue Gray
+        textColor: "#F1F5F9", // Soft White
+        borderColor: "#334155", // Slate Gray
+      },
+      {
+        backgroundColor: "#F43F5E", // Rose Red
+        textColor: "#FFFFFF", // White
+        borderColor: "#BE123C", // Dark Rose
+      },
+      {
+        backgroundColor: "#10B981", // Emerald Green
+        textColor: "#FFFFFF", // White
+        borderColor: "#047857", // Deep Emerald
+      },
+      {
+        backgroundColor: "#F59E0B", // Amber
+        textColor: "#1E293B", // Navy Text
+        borderColor: "#B45309", // Burnt Orange
+      },
+      {
+        backgroundColor: "#3B82F6", // Blue
+        textColor: "#FFFFFF", // White
+        borderColor: "#1D4ED8", // Royal Blue
+      },
+      {
+        backgroundColor: "#8B5CF6", // Violet
+        textColor: "#FFFFFF", // White
+        borderColor: "#6D28D9", // Deep Violet
+      },
+      {
+        backgroundColor: "#EC4899", // Pink
+        textColor: "#FFFFFF", // White
+        borderColor: "#BE185D", // Dark Pink
+      },
+      {
+        backgroundColor: "#F97316", // Orange
+        textColor: "#FFFFFF", // White
+        borderColor: "#C2410C", // Burnt Orange
+      },
+      {
+        backgroundColor: "#14B8A6", // Teal
+        textColor: "#FFFFFF", // White
+        borderColor: "#0F766E", // Deep Teal
+      },
+      {
+        backgroundColor: "#E5E7EB", // Light Gray
+        textColor: "#111827", // Almost Black
+        borderColor: "#9CA3AF", // Medium Gray
+      },
+    ];
+
+    //giev option to user to select color
   }
 
   public async unmarkSelection() {

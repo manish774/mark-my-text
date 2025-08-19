@@ -1,0 +1,100 @@
+{
+  "name": "mark-it-persistent",
+  "displayName": "Mark It - Persistent Code Highlighter",
+  "description": "Mark code snippets with persistent blue highlighting",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "markIt.markSelection",
+        "title": "Mark It",
+        "icon": "$(bookmark)"
+      },
+      {
+        "command": "markIt.unmarkSelection",
+        "title": "Unmark It",
+        "icon": "$(bookmark-remove)"
+      },
+      {
+        "command": "markIt.clearAllMarks",
+        "title": "Clear All Marks",
+        "category": "Mark It"
+      },
+      {
+        "command": "markIt.listAllMarks",
+        "title": "List All Marks",
+        "category": "Mark It"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "markIt.markSelection",
+          "when": "editorHasSelection",
+          "group": "1_modification@1"
+        },
+        {
+          "command": "markIt.unmarkSelection",
+          "when": "editorTextFocus",
+          "group": "1_modification@2"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "markIt.markSelection",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "markIt.unmarkSelection",
+          "when": "editorTextFocus"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Mark It",
+      "properties": {
+        "markIt.highlightColor": {
+          "type": "string",
+          "default": "rgba(0, 123, 255, 0.3)",
+          "description": "Background color for marked text (CSS color format)"
+        },
+        "markIt.borderColor": {
+          "type": "string",
+          "default": "#007bff",
+          "description": "Border color for marked text"
+        },
+        "markIt.showInOverviewRuler": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show marked regions in the overview ruler"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.4"
+  }
+}

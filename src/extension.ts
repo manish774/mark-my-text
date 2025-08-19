@@ -16,7 +16,6 @@ interface StoredMarks {
 }
 
 class MarkItManager {
-  //8ilOrdP3S89M3ZUPR7KuSNaER6mtZiyVzkyqiVjI8q1npxvJHVAjJQQJ99BHACAAAAAAAAAAAAASAZDO3wLb
   private context: vscode.ExtensionContext;
   private decorationType: vscode.TextEditorDecorationType;
   private markedRanges: Map<string, MarkedRange[]> = new Map();
